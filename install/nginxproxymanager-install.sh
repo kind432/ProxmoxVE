@@ -39,10 +39,11 @@ $STD /opt/certbot/bin/pip install certbot certbot-dns-cloudflare
 ln -sf /opt/certbot/bin/certbot /usr/local/bin/certbot
 msg_ok "Set up Certbot"
 
-msg_info "Installing Openresty"
 msg_info "Fixing openresty.org DNS"
 echo "52.11.111.175 openresty.org" >> /etc/hosts
 msg_ok "openresty.org pinned"
+
+msg_info "Installing Openresty"
 curl -fsSL "https://openresty.org/package/pubkey.gpg" | gpg --dearmor -o /etc/apt/trusted.gpg.d/openresty.gpg
 cat <<'EOF' >/etc/apt/sources.list.d/openresty.sources
 Types: deb
